@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Carta Especial</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #fff8e1 0%, #ffecb3 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+            text-align: center;
+        }
+        
+        h1 {
+            color: #f57f17;
+            margin-bottom: 20px;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.1);
+        }
+        
+        .password-container {
+            background-color: rgba(255, 255, 255, 0.9);
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+        
+        input {
+            padding: 12px 15px;
+            border: 2px solid #ffd54f;
+            border-radius: 8px;
+            font-size: 16px;
+            width: 100%;
+            margin-bottom: 15px;
+            text-align: center;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        
+        input:focus {
+            border-color: #fbc02d;
+        }
+        
+        button {
+            background: linear-gradient(to bottom, #ffd54f, #fbc02d);
+            color: #5d4037;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 8px rgba(0,0,0,0.15);
+        }
+        
+        .card-container {
+            display: none;
+            position: relative;
+            margin-top: 30px;
+        }
+        
+        .card {
+            background-color: #fffde7;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+            position: relative;
+            overflow: hidden;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .flower-border {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .flower {
+            position: absolute;
+            font-size: 24px;
+            color: #ffd54f;
+            animation: float 5s infinite ease-in-out;
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0) rotate(0deg); }
+            50% { transform: translateY(-10px) rotate(5deg); }
+        }
+        
+        .message {
+            font-style: italic;
+            font-size: 16px;
+            line-height: 1.6;
+            color: #5d4037;
+            text-align: left;
+            position: relative;
+            z-index: 1;
+        }
+        
+        .show-image-btn {
+            margin-top: 20px;
+            background: linear-gradient(to bottom, #ffd54f, #fbc02d);
+            color: #5d4037;
+            border: none;
+            padding: 12px 25px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: all 0.3s;
+            box-shadow: 0 3px 5px rgba(0,0,0,0.1);
+        }
+        
+        .hidden {
+            display: none;
+        }
+        
+        .error-message {
+            color: #e53935;
+            margin-top: 10px;
+            font-size: 14px;
+            display: none;
+        }
+        
+        .image-container {
+            margin-top: 30px;
+            display: none;
+        }
+        
+        .image-container img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>💌 Carta Especial 💌</h1>
+        
+        <div class="password-container" id="passwordSection">
+            <p>Ingresa la contraseña para ver el mensaje:</p>
+            <input type="password" id="passwordInput" placeholder="Contraseña">
+            <button onclick="checkPassword()">Acceder</button>
+            <p class="error-message" id="errorMessage">Contraseña incorrecta. Intenta nuevamente.</p>
+        </div>
+        
+        <div class="card-container" id="cardSection">
+            <div class="card">
+                <div class="flower-border" id="flowerBorder"></div>
+                <div class="message">
+                    <p>Buenos días o buenas tardes, primero que nada te agradezco por tu hermosa amistad. Aunque ya no hablo mucho, siempre estoy de aquí a siempre y si no, yo sé que siempre vas a lograr todo lo que te propongas. ¡Ánimos! No te rindas y sigue tus sueños.</p>
+                    
+                    <p>Algo más que quiero decirte es gracias y mil gracias por tu amistad jsjsj. lucha por todo lo que necesites y siempre toma buenas decisiones y si no es el caso aprende de los errores para que puedas crecer. Te agradezco ya que tú me hiciste conocer cosas que yo no sabía de mi mismo jsjsj. Bueno, lo que escribo es más complicado hablarlo ya que no salen las palabras.</p>
+                    
+                    <p>Cómo tú dijiste, disfruta tu último año y has todo para que puedas recordar. Bueno ya terminó de hablar o escribir. ¡FELIZ CUMPLEAÑOS! Que la pases bien con tu familia, compañeros y amigos. Siempre con la frente en alto y no te desanimes con los resultados, sino que sea para mejorar.</p>
+                    
+                    <p style="text-align: right; margin-top: 20px;">De parte de: mi persona tu amigo</p>
+                </div>
+            </div>
+            
+            <button class="show-image-btn" onclick="showImage()">Ver Imagen Especial</button>
+            
+            <div class="image-container" id="imageContainer">
+                <!-- La imagen se cargará aquí -->
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Función para verificar la contraseña
+        function checkPassword() {
+            const password = document.getElementById('passwordInput').value;
+            const errorMessage = document.getElementById('errorMessage');
+            const passwordSection = document.getElementById('passwordSection');
+            const cardSection = document.getElementById('cardSection');
+            
+            if (password === '1709') {
+                passwordSection.style.display = 'none';
+                cardSection.style.display = 'block';
+                createFlowers();
+            } else {
+                errorMessage.style.display = 'block';
+                setTimeout(() => {
+                    errorMessage.style.display = 'none';
+                }, 3000);
+            }
+        }
+        
+        // Función para crear las flores alrededor de la carta
+        function createFlowers() {
+            const flowerBorder = document.getElementById('flowerBorder');
+            const positions = [
+                {top: '5%', left: '5%'},
+                {top: '5%', right: '5%'},
+                {bottom: '5%', left: '5%'},
+                {bottom: '5%', right: '5%'},
+                {top: '20%', left: '2%'},
+                {top: '20%', right: '2%'},
+                {bottom: '20%', left: '2%'},
+                {bottom: '20%', right: '2%'},
+                {top: '40%', left: '0%'},
+                {top: '40%', right: '0%'},
+                {top: '60%', left: '0%'},
+                {top: '60%', right: '0%'},
+                {top: '80%', left: '2%'},
+                {top: '80%', right: '2%'}
+            ];
+            
+            positions.forEach(pos => {
+                const flower = document.createElement('div');
+                flower.classList.add('flower');
+                flower.innerHTML = '🌼';
+                flower.style.top = pos.top || '';
+                flower.style.left = pos.left || '';
+                flower.style.right = pos.right || '';
+                flower.style.bottom = pos.bottom || '';
+                
+                // Añadir animación aleatoria
+                const delay = Math.random() * 5;
+                const duration = 3 + Math.random() * 4;
+                flower.style.animationDelay = `${delay}s`;
+                flower.style.animationDuration = `${duration}s`;
+                
+                flowerBorder.appendChild(flower);
+            });
+        }
+        
+        // Función para mostrar la imagen
+        function showImage() {
+            const imageContainer = document.getElementById('imageContainer');
+            imageContainer.innerHTML = '<p>Imagen cargada...</p>';
+            imageContainer.style.display = 'block';
+            
+            // Aquí normalmente cargarías la imagen, pero como no tenemos acceso al archivo,
+            // mostramos un mensaje indicando que se cargaría la imagen
+            setTimeout(() => {
+                imageContainer.innerHTML = `
+                    <p>🌼 Imagen especial cargada 🌼</p>
+                    <p><small>(En una implementación real, aquí aparecería la imagen)</small></p>
+                `;
+            }, 1000);
+        }
+        
+        // Permitir enviar la contraseña con la tecla Enter
+        document.getElementById('passwordInput').addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                checkPassword();
+            }
+        });
+    </script>
+</body>
+</html>
